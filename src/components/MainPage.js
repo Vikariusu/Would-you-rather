@@ -13,12 +13,12 @@ class MainPage extends Component {
                 <h2>Unaswered</h2>
                 <ul>
                     {this.props.unansweredQuestions.map(question => (
-                        <li>
+                        <li key={question.id}>
                             <div>Would you rather...</div>
                             <div>
                                 <span>{question.optionOne.text}</span> OR <span>{question.optionTwo.text}</span>
                             </div>
-                            <button onClick={this.toQuestion}>Vote</button>
+                            <button onClick={(e) => this.toQuestion(e, question.id)}>Vote</button>
                         </li>
                     ))}
                 </ul>
@@ -26,7 +26,7 @@ class MainPage extends Component {
                 <h2>Answered</h2>
                 <ul>
                     {this.props.answeredQuestions.map(question => (
-                        <li>
+                        <li key={question.id}>
                             <div>Would you rather...</div>
                             <div>
                                 <span>{question.optionOne.text}</span> OR <span>{question.optionTwo.text}</span>
