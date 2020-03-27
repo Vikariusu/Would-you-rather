@@ -7,8 +7,7 @@ import Nav from './Nav';
 import MainPage from './MainPage';
 import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
-import ScoreBoard from './ScoreBoard';
-
+import LeaderBoard from './LeaderBoard';
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,7 +21,7 @@ class App extends React.Component {
         <Route path="/" exact component={MainPage} />
         <Route path="/questions/:id" component={QuestionPage} />
         <Route path="/new" component={NewQuestion} />
-        <Route path="/scoreboard" component={ScoreBoard} />
+        <Route path="/leaderboard" component={LeaderBoard} />
       </Router>
     );
   }
