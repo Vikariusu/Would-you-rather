@@ -5,10 +5,17 @@ import { setAuthedUser } from './authedUser';
 
 const AUTHED_ID = 'sarahedo'; // temporary authenticated user
 
-export default function getInitialData() {
+export function getInitialData() {
     return (dispatch) => {
         _getQuestions().then(questions => dispatch(receiveQuestions(questions)));
         _getUsers().then(users => dispatch(receiveUsers(users)));
         dispatch(setAuthedUser(AUTHED_ID));
+    }
+}
+
+export function getUsersAndQuestions() {
+    return (dispatch) => {
+        _getQuestions().then(questions => dispatch(receiveQuestions(questions)));
+        _getUsers().then(users => dispatch(receiveUsers(users)));
     }
 }
