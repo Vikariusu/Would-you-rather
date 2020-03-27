@@ -22,14 +22,14 @@ class Nav extends Component {
             <nav>
                 <div className="nav-left">
                     <Link to="/">Homepage</Link>
-                    <Link to="/scoreboard">Scoreboard</Link>
+                    <Link to="/leaderboard">Leaderboard</Link>
                 </div>
                 <div className="nav-right">
                     <Link to="/new">Add question</Link>
                     {authedUser && (
                         <div>
                             <span>Hello {firstName}</span>
-                            <img src={user && user.avatarURL} style={{ width: '30px' }} />
+                            <img src={user && user.avatarURL} alt="" style={{ width: '30px' }} />
                         </div>
                     )}
                     <button onClick={this.toggleAuthedUser}>
