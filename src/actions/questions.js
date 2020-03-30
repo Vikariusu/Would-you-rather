@@ -1,10 +1,20 @@
+import { _saveQuestion } from '../utils/_DATA';
+
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 
-export function addQuestion(question) {
+function addQuestion(question) {
     return {
         type: ADD_QUESTION,
         question
+    }
+}
+
+// async action creator
+export function handleAddQuestion(question) {
+    return (dispatch) => {
+        return _saveQuestion(question)
+            .then(question => dispatch(addQuestion(question)))
     }
 }
 

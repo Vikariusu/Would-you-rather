@@ -20,7 +20,7 @@ class App extends React.Component {
         <Nav />
         <Route path="/" exact component={MainPage} />
         <Route path="/questions/:id" component={QuestionPage} />
-        <Route path="/new" component={NewQuestion} />
+        <Route path="/add" component={NewQuestion} />
         <Route path="/leaderboard" component={LeaderBoard} />
       </Router>
     );

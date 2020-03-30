@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { _saveQuestionAnswer } from '../utils/_DATA';
+import { _saveQuestionAnswer } from '../utils/_DATA'; // TODO: move to actions
 import { getUsersAndQuestions } from '../actions/shared';
 
 import UnansweredQuestionOptions from './UnansweredQuestionOptions';
