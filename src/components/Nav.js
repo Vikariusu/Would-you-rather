@@ -25,7 +25,7 @@ class Nav extends Component {
                     <Link to="/leaderboard">Leaderboard</Link>
                 </div>
                 <div className="nav-right">
-                    <Link to="/new">Add question</Link>
+                    <Link to="/add">Add question</Link>
                     {authedUser && (
                         <div>
                             <span>Hello {firstName}</span>
