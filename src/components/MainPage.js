@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class MainPage extends Component {
     toQuestion = (e, id) => {
@@ -8,6 +9,10 @@ class MainPage extends Component {
     }
 
     render() {
+        if (!this.props.authedUser) {
+            return <Redirect to="/login" />;
+        }
+
         return (
             <div>
                 <h2>Unaswered</h2>
@@ -58,7 +63,8 @@ function mapStateToProp({ questions, users, authedUser }) {
 
     return {
         answeredQuestions: sortByTimestamp(answeredQuestions),
-        unansweredQuestions: sortByTimestamp(unansweredQuestions)
+        unansweredQuestions: sortByTimestamp(unansweredQuestions),
+        authedUser
     }
 }
 
