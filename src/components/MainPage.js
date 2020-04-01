@@ -1,11 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+import QuestionList from './QuestionList';
+
+const StyledMainpage = styled.div`
+    width: 60vw;
+    margin: 0 auto;
+`
+
+const StyledQuestionOptions = styled.div`
+    text-align: center;
+    
+    button {
+        display: inline-block;
+        padding: 10px;
+        border: none;
+        text-transform: uppercase;
+        margin: 0 6px; 
+        border-radius: 3px;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+        cursor: pointer;
+   }
+
+   .active {
+        background: #44BBA4;
+        color: white; 
+    }  
+`
 
 class MainPage extends Component {
-    toQuestion = (e, id) => {
-        e.preventDefault();
-        this.props.history.push(`/questions/${id}`)
+    state = {
+        optionChosen: 'unanswered'
+    }
+
+    changeOption = (optionChosen) => {
+        this.setState({ optionChosen })
     }
 
     render() {
@@ -14,36 +47,34 @@ class MainPage extends Component {
         }
 
         return (
-            <div>
-                <h2>Unaswered</h2>
-                <ul>
-                    {this.props.unansweredQuestions.map(question => (
-                        <li key={question.id}>
-                            <div>Would you rather...</div>
-                            <div>
-                                <span>{question.optionOne.text}</span> OR <span>{question.optionTwo.text}</span>
-                            </div>
-                            <button onClick={(e) => this.toQuestion(e, question.id)}>Vote</button>
-                        </li>
-                    ))}
-                </ul>
-
-                <h2>Answered</h2>
-                <ul>
-                    {this.props.answeredQuestions.map(question => (
-                        <li key={question.id}>
-                            <div>Would you rather...</div>
-                            <div>
-                                <span>{question.optionOne.text}</span> OR <span>{question.optionTwo.text}</span>
-                            </div>
-                            <button onClick={(e) => this.toQuestion(e, question.id)}>Vote</button>
-                        </li>
-                    ))}
-                </ul>
-
-            </div>
-
-
+            <StyledMainpage>
+                <StyledQuestionOptions>
+                    <button
+                        onClick={() => this.changeOption('unanswered')}
+                        className={this.state.optionChosen === 'unanswered' ? 'active' : ''}
+                    >
+                        Unanswered
+                    </button>
+                    <button
+                        onClick={() => this.changeOption('answered')}
+                        className={this.state.optionChosen === 'answered' ? 'active' : ''}
+                    >
+                        Answered
+                    </button>
+                </StyledQuestionOptions>
+                {this.state.optionChosen === 'unanswered'
+                    ? (<QuestionList
+                        questions={this.props.unansweredQuestions}
+                        text="Unanswered Questions"
+                    />)
+                    : (
+                        <QuestionList
+                            questions={this.props.answeredQuestions}
+                            text="Answered Questions"
+                        />
+                    )
+                }
+            </StyledMainpage>
         )
     }
 }
