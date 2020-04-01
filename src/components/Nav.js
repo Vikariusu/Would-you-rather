@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setAuthedUser } from '../actions/authedUser'
+import { setAuthedUser } from '../actions/authedUser';
+import { withRouter } from 'react-router-dom';
 
 class Nav extends Component {
-    toggleAuthedUser = () => {
-        const currentAuthedUser = 'sarahedo'; // temporary authed user
+    userLogout = () => {
+        this.props.dispatch(setAuthedUser(null))
+        this.redirectToHome();
+    }
 
-        if (!this.props.authedUser) {
-            this.props.dispatch(setAuthedUser(currentAuthedUser))
-        } else {
-            this.props.dispatch(setAuthedUser(null))
-        }
+    redirectToHome = () => {
+        const { history } = this.props;
+        if (history) history.push('/');
     }
 
     render() {
@@ -32,9 +33,9 @@ class Nav extends Component {
                             <img src={user && user.avatarURL} alt="" style={{ width: '30px' }} />
                         </div>
                     )}
-                    <button onClick={this.toggleAuthedUser}>
-                        {authedUser ? 'Logout' : 'Login'}
-                    </button>
+                    {authedUser && (
+                        <button onClick={this.userLogout}>Logout</button>
+                    )}
                 </div>
             </nav>
         )
@@ -48,4 +49,4 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(withRouter(Nav));

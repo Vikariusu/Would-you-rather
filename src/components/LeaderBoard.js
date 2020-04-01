@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 class LeaderBoard extends Component {
     displayUserRankings = () => {
@@ -34,6 +35,10 @@ class LeaderBoard extends Component {
     }
 
     render() {
+        if (!this.props.authedUser) {
+            return <Redirect to="/login" />;
+        }
+
         return (
             <div>
                 <h2>Leaderboard</h2>
@@ -43,9 +48,10 @@ class LeaderBoard extends Component {
     }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
     return {
-        users
+        users,
+        authedUser
     }
 }
 

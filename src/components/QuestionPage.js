@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { _saveQuestionAnswer } from '../utils/_DATA'; // TODO: move to actions
 import { getUsersAndQuestions } from '../actions/shared';
 
@@ -16,7 +17,11 @@ class QuestionPage extends Component {
     }
 
     render() {
-        const { question, author, isAnswered } = this.props;
+        const { question, author, isAnswered, authedUser } = this.props;
+
+        if (!authedUser) {
+            return <Redirect to="/login" />;
+        }
 
         return (
             <div>
