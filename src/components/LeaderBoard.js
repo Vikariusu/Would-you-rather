@@ -13,8 +13,6 @@ const StyledLeaderBoard = styled.div`
     color: #393E41;
 
     h2 {
-        margin: 0;
-        padding: 16px;
         border-bottom: 1px solid #E7E5DF;
     }
 `
@@ -35,7 +33,6 @@ class LeaderBoard extends Component {
         let rank = 0;
         // return user cards based on their rank
         return userIdsByScore.map(userId => {
-            // const user = users[userId];
             rank = rank + 1;
 
             return (

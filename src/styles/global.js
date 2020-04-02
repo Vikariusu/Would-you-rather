@@ -1,7 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    font-family: Arial, Helvetica, 'sans-serif';
+    body {
+        background: #f5f6fa;
+        font: 1rem "PT Sans", sans-serif;
+    }
+
+    h2 {
+        font: 1.3rem ;
+        font-weight: bolder;
+        margin: 0;
+        padding: 16px;
+    }
+
 
     a {
         text-decoration: none;

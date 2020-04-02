@@ -16,7 +16,7 @@ import UserLogin from './UserLogin';
 import NotFoundPage from './NotFoundPage';
 
 const StyledApp = styled.div`
-    background: #E7E5DF;
+    /* background: #E7E5DF; */
     min-height: 100vh;
 `
 const Wrapper = styled.div`
