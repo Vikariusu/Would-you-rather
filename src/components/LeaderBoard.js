@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+import RankCard from './RankCard';
+
+const StyledLeaderBoard = styled.div`
+    width: 60vw;
+    margin: 0 auto;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    color: #393E41;
+
+    h2 {
+        margin: 0;
+        padding: 16px;
+        border-bottom: 1px solid #E7E5DF;
+    }
+`
 
 class LeaderBoard extends Component {
     displayUserRankings = () => {
@@ -15,21 +32,18 @@ class LeaderBoard extends Component {
             return scoreA > scoreB;
         });
 
-        // return user cards based on their score
+        let rank = 0;
+        // return user cards based on their rank
         return userIdsByScore.map(userId => {
-            const user = users[userId];
+            // const user = users[userId];
+            rank = rank + 1;
 
             return (
-                <div className="user-rank-card" key={userId}>
-                    <div>
-                        <img src={user.avatarURL} style={{ width: '30px' }} alt="" />
-                        {user.name}
-                    </div>
-                    <div>
-                        <p>Questions asked: {user.questions.length}</p>
-                        <p>Questions answered: {Object.keys(user.answers).length}</p>
-                    </div>
-                </div>
+                <RankCard
+                    key={userId}
+                    user={users[userId]}
+                    rank={rank}
+                />
             )
         })
     }
@@ -40,10 +54,10 @@ class LeaderBoard extends Component {
         }
 
         return (
-            <div>
+            <StyledLeaderBoard>
                 <h2>Leaderboard</h2>
                 {this.displayUserRankings()}
-            </div>
+            </StyledLeaderBoard>
         )
     }
 }
