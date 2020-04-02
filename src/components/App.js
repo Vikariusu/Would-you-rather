@@ -4,6 +4,7 @@ import { Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getInitialData } from '../actions/shared';
 import styled from 'styled-components';
+import GlobalStyle from '../styles/global';
 
 // components
 import Nav from './Nav';
@@ -30,6 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <StyledApp>
+        <GlobalStyle />
         <Router>
           <Nav />
           <Wrapper>
