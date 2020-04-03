@@ -3,9 +3,31 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { _saveQuestionAnswer } from '../utils/_DATA'; // TODO: move to actions
 import { getUsersAndQuestions } from '../actions/shared';
+import styled from 'styled-components';
 
 import UnansweredQuestionOptions from './UnansweredQuestionOptions';
 import AnsweredQuestionDisplay from './AnsweredQuestionDisplay';
+
+const StyledQuestionPage = styled.div`
+    width: 60vw;
+    margin: 40px auto;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    color: #393E41;
+    text-align: center;
+    padding: 50px 20px;
+
+    .question-author {
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+
+        img {
+            margin-right: 6px;
+        }
+    }
+`
 
 class QuestionPage extends Component {
     handleVote = (answer) => {
@@ -24,25 +46,27 @@ class QuestionPage extends Component {
         }
 
         return (
-            <div>
+            <StyledQuestionPage>
                 <div className="question">
                     <div className="question-author">
                         <img src={author ? author.avatarURL : ''} alt="" style={{ width: '30px' }} />
                         {author && author.name} asks:
                     </div>
-                    <h2>Would you rather...</h2>
-                    {isAnswered ? (
-                        <AnsweredQuestionDisplay
-                            question={question}
-                        />
-                    ) : (
-                            <UnansweredQuestionOptions
+                    <div>
+                        <h2>Would you rather...</h2>
+                        {isAnswered ? (
+                            <AnsweredQuestionDisplay
                                 question={question}
-                                handleVote={this.handleVote}
                             />
-                        )}
+                        ) : (
+                                <UnansweredQuestionOptions
+                                    question={question}
+                                    handleVote={this.handleVote}
+                                />
+                            )}
+                    </div>
                 </div>
-            </div>
+            </StyledQuestionPage>
         )
     }
 }
