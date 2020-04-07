@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { _saveQuestionAnswer } from '../utils/_DATA'; // TODO: move to actions
-import { getUsersAndQuestions } from '../actions/shared';
+import { handleSaveAnswer } from '../actions/questions';
 import styled from 'styled-components';
 
 import UnansweredQuestionOptions from './UnansweredQuestionOptions';
@@ -34,8 +33,7 @@ class QuestionPage extends Component {
         const qid = this.props.question.id;
         const authedUser = this.props.authedUser;
 
-        _saveQuestionAnswer({ authedUser, qid, answer })
-            .then(() => this.props.dispatch(getUsersAndQuestions()))
+        this.props.dispatch(handleSaveAnswer({ authedUser, qid, answer }))
     }
 
     render() {

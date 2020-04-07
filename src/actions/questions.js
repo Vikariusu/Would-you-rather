@@ -1,7 +1,17 @@
-import { _saveQuestion } from '../utils/_DATA';
+import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA';
+import { getUsersAndQuestions } from './shared';
 
+// Constants
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
+export const SAVE_ANSWER = 'SAVE_ANSWER';
+
+export function receiveQuestions(questions) {
+    return {
+        type: RECEIVE_QUESTIONS,
+        questions
+    }
+}
 
 function addQuestion(question) {
     return {
@@ -10,7 +20,12 @@ function addQuestion(question) {
     }
 }
 
-// async action creator
+export function handleReceiveQuestions() {
+    return (dispatch) => {
+        return _getQuestions().then(questions => dispatch(receiveQuestions(questions)))
+    };
+}
+
 export function handleAddQuestion(question) {
     return (dispatch) => {
         return _saveQuestion(question)
@@ -18,9 +33,9 @@ export function handleAddQuestion(question) {
     }
 }
 
-export function receiveQuestions(questions) {
-    return {
-        type: RECEIVE_QUESTIONS,
-        questions
+export function handleSaveAnswer({ authedUser, qid, answer }) {
+    return (dispatch) => {
+        return _saveQuestionAnswer({ authedUser, qid, answer })
+            .then(() => dispatch(getUsersAndQuestions()))
     }
 }
