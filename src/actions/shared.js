@@ -7,8 +7,7 @@ const AUTHED_ID = null;
 
 export function getInitialData() {
     return (dispatch) => {
-        _getQuestions().then(questions => dispatch(receiveQuestions(questions)));
-        _getUsers().then(users => dispatch(receiveUsers(users)));
+        dispatch(getUsersAndQuestions());
         dispatch(setAuthedUser(AUTHED_ID));
     }
 }
