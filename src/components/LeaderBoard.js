@@ -24,10 +24,10 @@ class LeaderBoard extends Component {
 
         // sort userIds by their score
         const userIdsByScore = userIds.sort((userIdA, userIdB) => {
-            const scoreA = users[userIdA].questions.length + users[userIdA].answers.length;
-            const scoreB = users[userIdB].questions.length + users[userIdB].answers.length;
+            const scoreA = users[userIdA].questions.length + Object.keys(users[userIdA].answers).length;
+            const scoreB = users[userIdB].questions.length + Object.keys(users[userIdB].answers).length;
 
-            return scoreA > scoreB;
+            return scoreB - scoreA;
         });
 
         let rank = 0;
