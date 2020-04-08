@@ -6,7 +6,7 @@ import RankCard from './RankCard';
 
 const StyledLeaderBoard = styled.div`
     width: 60vw;
-    margin: 0 auto;
+    margin: 40px auto;
     background: white;
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
