@@ -20,7 +20,7 @@ const StyledQuestionCard = styled.div`
 
 const StyledButton = styled.button`
     border: none;
-    background: #D5A021;
+    background: #4c5c65;
     color: white;
     padding: 8px;
     font-size: 12px;
@@ -29,6 +29,11 @@ const StyledButton = styled.button`
     border-radius: 4px;
     letter-spacing: 0.6px;
     cursor: pointer;
+
+    &:hover {
+        background: #39454c;
+        transition: background 0.2s ease-in;
+    }
 `
 
 function QuestionCard({ question, history }) {

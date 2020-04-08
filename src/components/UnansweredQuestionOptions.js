@@ -13,6 +13,11 @@ const StyledOption = styled.button`
     letter-spacing: 0.5px;
     cursor: pointer;
     width: 100%;
+
+    &:hover {
+        background: #399e8b;
+        transition: background 0.2s ease-in;
+    }
 `
 
 function UnansweredQuestionOptions({ question, handleVote }) {

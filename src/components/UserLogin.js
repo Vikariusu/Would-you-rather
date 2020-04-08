@@ -26,7 +26,7 @@ const StyledDropdown = styled.div`
     width: 20em;
     height: 3em;
     line-height: 3;
-    background: #49647f;
+    background: #DCDDE1;
     overflow: hidden;
     border-radius: .25em;
 
@@ -38,12 +38,12 @@ const StyledDropdown = styled.div`
         outline: 0;
         box-shadow: none;
         border: 0 !important;
-        background: #49647f;
+        background: #DCDDE1;
         background-image: none;
         font-size: 18px;
         flex: 1;
         padding: 0 .5em;
-        color: #fff;
+        color: #4c5c65;
         cursor: pointer;
     }
 
@@ -53,7 +53,7 @@ const StyledDropdown = styled.div`
     }
 
     &:hover::after {
-        color: #D5A021;
+        color: #393E41;
     }
 
     &::after {
@@ -62,7 +62,7 @@ const StyledDropdown = styled.div`
         top: 0;
         right: 0;
         padding: 0 1em;
-        background: #49647f;
+        background: #DCDDE1;
         cursor: pointer;
         pointer-events: none;
         -webkit-transition: .25s all ease;

@@ -11,6 +11,7 @@ const StyledMainpage = styled.div`
 
 const StyledQuestionOptions = styled.div`
     text-align: center;
+    margin-top: 40px;
     
     button {
         display: inline-block;

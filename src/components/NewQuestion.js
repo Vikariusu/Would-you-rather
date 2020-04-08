@@ -44,6 +44,11 @@ const StyledButton = styled.button`
     border-radius: 3px;
     color: white;
     cursor: pointer;
+
+    &:hover {
+        background: #c1911d;
+        transition: background 0.2s ease-in;
+    }
 `
 
 class NewQuestion extends Component {
