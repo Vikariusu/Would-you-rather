@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledNotFound = styled.div`
@@ -11,13 +11,14 @@ const StyledNotFound = styled.div`
     }
 `
 
-export default class NotFoundPage extends Component {
-    render() {
-        return (
-            <StyledNotFound>
-                <h1>404</h1>
-                <p>This page doesn't exist!</p>
-            </StyledNotFound>
-        )
-    }
+function NotFoundPage() {
+    return (
+        <StyledNotFound>
+            <h1>404</h1>
+            <p>This page doesn't exist!</p>
+        </StyledNotFound>
+    )
 }
+
+export default NotFoundPage;
+

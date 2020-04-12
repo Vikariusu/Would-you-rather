@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import QuestionList from './QuestionList';
 
@@ -43,10 +42,6 @@ class MainPage extends Component {
     }
 
     render() {
-        if (!this.props.authedUser) {
-            return <Redirect to="/login" />;
-        }
-
         return (
             <StyledMainpage>
                 <StyledQuestionOptions>
@@ -95,8 +90,7 @@ function mapStateToProp({ questions, users, authedUser }) {
 
     return {
         answeredQuestions: sortByTimestamp(answeredQuestions),
-        unansweredQuestions: sortByTimestamp(unansweredQuestions),
-        authedUser
+        unansweredQuestions: sortByTimestamp(unansweredQuestions)
     }
 }
 

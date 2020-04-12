@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { handleAddQuestion } from '../actions/questions';
 import styled from 'styled-components';
 
@@ -83,10 +82,6 @@ class NewQuestion extends Component {
     }
 
     render() {
-        if (!this.props.authedUser) {
-            return <Redirect to="/login" />;
-        }
-
         return (
             <StyledNewQuestion>
                 <h2>Ask a Question</h2>

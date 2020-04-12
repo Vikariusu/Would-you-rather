@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledUserLogin = styled.div`
@@ -73,19 +74,28 @@ const StyledDropdown = styled.div`
 
 class UserLogin extends Component {
     state = {
+        redirectToReferrer: false,
         value: 'default'
     }
 
     setUser = (e) => {
         const newAuthedUser = e.target.value;
-        const { history } = this.props;
 
-        this.setState({ value: newAuthedUser })
+        this.setState(() => ({
+            redirectToReferrer: true,
+            value: newAuthedUser
+        }))
         this.props.dispatch(setAuthedUser(newAuthedUser))
-        history.push('/');
     }
 
     render() {
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
+        const { redirectToReferrer } = this.state
+
+        if (redirectToReferrer === true) {
+            return <Redirect to={from} />
+        }
+
         return (
             <StyledUserLogin>
                 <h2>Log in</h2>

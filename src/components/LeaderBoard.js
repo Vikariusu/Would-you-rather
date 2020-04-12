@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import RankCard from './RankCard';
 
@@ -46,10 +45,6 @@ class LeaderBoard extends Component {
     }
 
     render() {
-        if (!this.props.authedUser) {
-            return <Redirect to="/login" />;
-        }
-
         return (
             <StyledLeaderBoard>
                 <h2>Leaderboard</h2>
