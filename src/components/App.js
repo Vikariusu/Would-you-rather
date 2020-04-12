@@ -14,9 +14,9 @@ import NewQuestion from './NewQuestion';
 import LeaderBoard from './LeaderBoard';
 import UserLogin from './UserLogin';
 import NotFoundPage from './NotFoundPage';
+import PrivateRoute from './PrivateRoute';
 
 const StyledApp = styled.div`
-    /* background: #E7E5DF; */
     min-height: 100vh;
 `
 const Wrapper = styled.div`
@@ -37,10 +37,10 @@ class App extends React.Component {
           <Wrapper>
             <Switch>
               <Route path="/login" component={UserLogin} />
-              <Route path="/" exact component={MainPage} />
-              <Route path="/add" component={NewQuestion} />
-              <Route path="/questions/:id" component={QuestionPage} />
-              <Route path="/leaderboard" component={LeaderBoard} />
+              <PrivateRoute path="/" exact component={MainPage} />
+              <PrivateRoute path="/add" component={NewQuestion} />
+              <PrivateRoute path="/questions/:id" component={QuestionPage} />
+              <PrivateRoute path="/leaderboard" component={LeaderBoard} />
               <Route component={NotFoundPage} />
             </Switch>
           </Wrapper>
