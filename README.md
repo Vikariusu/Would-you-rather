@@ -1,17 +1,28 @@
-# Would You Rather Project
+## About
+This is the final assessment project for Udacity's React + Redux course.
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+### Functionality
+Would You Rather app lets the user login (using a list of existing users), view their unanswered and answered questions and vote in a poll. User can also view the leaderboard and add a new question.
+Most of the routes require user to login to use app's functionality (creating a question, viewing leaderboard or voting in a poll).
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+### Get started:
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+* Install all project dependencies with `npm install`
+* Start the development server with `npm start`
+
+### Stack used:
+* React + Redux (with redux-thunk)
+* React-Router
+* styled-components
 
 ## Data
-
+The `_DATA.js` file represents a fake database and methods that let you access the data.
 There are two types of objects stored in our database:
 
 * Users
 * Questions
+
+API notes from Udacity's parameters below
 
 ### Users
 
@@ -95,6 +106,5 @@ Your code will talk to the database via 4 methods:
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
 
-## Contributing
 
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+
