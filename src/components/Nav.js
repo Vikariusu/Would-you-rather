@@ -54,11 +54,16 @@ const StyledNav = styled.nav`
             display:block
         }
 
-        a {
+        button {
             display: flex;
             align-items: center;
             text-decoration:none;
-            line-height:50px;
+            line-height: 50px;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+            width: 100%;
         }
     }
 `
@@ -89,12 +94,12 @@ class Nav extends Component {
                     {authedUser && (
                         <ul>
                             <li>
-                                <a href="#" className="nav-user">
+                                <button className="nav-user">
                                     <span>Hello {firstName}</span>
                                     <img src={user && user.avatarURL} alt="" style={{ width: '30px' }} />
-                                </a>
+                                </button>
                                 <ul>
-                                    <li onClick={this.userLogout}><a href="#">Logout</a></li>
+                                    <li onClick={this.userLogout}><button>Logout</button></li>
                                 </ul>
                             </li>
                         </ul>

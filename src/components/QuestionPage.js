@@ -37,7 +37,7 @@ class QuestionPage extends Component {
     }
 
     render() {
-        const { question, author, isAnswered, authedUser } = this.props;
+        const { question, author, isAnswered } = this.props;
 
         // App cannot find question so redirect page to 404 error
         if (!question) {
