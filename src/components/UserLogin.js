@@ -78,6 +78,7 @@ class UserLogin extends Component {
         value: 'default'
     }
 
+    // sets the authedUser
     setUser = (e) => {
         const newAuthedUser = e.target.value;
 
@@ -85,6 +86,7 @@ class UserLogin extends Component {
             redirectToReferrer: true,
             value: newAuthedUser
         }))
+
         this.props.dispatch(setAuthedUser(newAuthedUser))
     }
 
@@ -92,6 +94,7 @@ class UserLogin extends Component {
         const { from } = this.props.location.state || { from: { pathname: '/' } }
         const { redirectToReferrer } = this.state
 
+        // redirects to the page user tried to access before logging in
         if (redirectToReferrer === true) {
             return <Redirect to={from} />
         }
@@ -102,9 +105,10 @@ class UserLogin extends Component {
                 <StyledDropdown>
                     <select id="users" value={this.state.value} onChange={this.setUser}>
                         <option disabled value="default">Choose a user</option>
-                        <option value="sarahedo">sarahedo</option>
-                        <option value="tylermcginnis">tylermcginnis</option>
-                        <option value="johndoe">johndoe</option>
+                        {Object.keys(this.props.users).map(user => (
+                            <option value={user} key={user}>{user}</option>
+
+                        ))}
                     </select>
                 </StyledDropdown>
             </StyledUserLogin>
@@ -112,8 +116,9 @@ class UserLogin extends Component {
     }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ users, authedUser }) {
     return {
+        users,
         authedUser
     }
 }
